@@ -8,7 +8,6 @@ import os
 from PIL import Image
 
 import pyrebase
-import datetime
 import pandas as pd
 import json
 
