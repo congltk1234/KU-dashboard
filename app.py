@@ -3,7 +3,6 @@ import numpy as np # np mean, np random
 import pandas as pd # read csv, df manipulation
 import time # to simulate a real time data, time loop 
 from datetime import datetime
-import plotly.express as px # interactive charts 
 import plost
 import firebase
 import os
