@@ -122,15 +122,6 @@ sensors = sensors[1:]
 # Notify the reader that the data was successfully loaded.
 data_load_state.text('Loading data...done!')
 
-# timestamp = data['TimeStamp']
-# from datetime import time
-# appointment = st.slider("Schedule your appointment:",value=(time(11, 30), time(12, 45)))
-# st.write("You're scheduled for:", appointment)
-
-# start_time = st.slider("When do you start?", value=datetime(2022, 9, 1, 0, 0),format="MM/DD/YY - hh:mm:ss")
-# st.write("Start time:", start_time)
-
-# hour_to_filter = st.slider('TimeStamp', df['TimeStamp'].min(), df['TimeStamp'].max(), df['TimeStamp'].max())  # min: 0h, max: 23h, default: 17h
 
 #### Make output dir
 try:
@@ -249,13 +240,13 @@ with sensor_tab:
             plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
             y= (options_sensors[0]),  # The name of the column to use for the data itself.
             color = color[options_sensors[0]],
-            width=450, pan_zoom='minimap')
+            pan_zoom='minimap')
         with graph2:
             st.subheader(f"{options_sensors[1]} data")
             plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
             y= (options_sensors[1]),  # The name of the column to use for the data itself.
             color = color[options_sensors[1]],
-            width=450, pan_zoom='minimap')
+            pan_zoom='minimap')
         try:
             graph3, graph4 = st.columns(2)
             with graph3:
@@ -263,13 +254,13 @@ with sensor_tab:
                 plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
                 y= (options_sensors[2]),  # The name of the column to use for the data itself.
                 color = color[options_sensors[2]],
-                width=450, pan_zoom='minimap')
+                pan_zoom='minimap')
             with graph4:
                 st.subheader(f"{options_sensors[3]} data")
                 plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
                 y= (options_sensors[3]),  # The name of the column to use for the data itself.
                 color = color[options_sensors[3]],
-                width=450, pan_zoom='minimap')
+                pan_zoom='minimap')
         except:
             pass
         try:
@@ -279,7 +270,7 @@ with sensor_tab:
                 plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
                 y= (options_sensors[4]),  # The name of the column to use for the data itself.
                 color = color[options_sensors[4]],
-                width=500, pan_zoom='minimap')
+                pan_zoom='minimap')
         except:
             pass
         sensor_button(show_data)
@@ -313,7 +304,7 @@ with people_tab:
         graph, data_col= st.columns([3, 1])
         with graph:
             plost.line_chart(  human_count, x='TimeStamp',  # The name of the column to use for the x axis.
-                y= ( 'People in room'), height=400, width=700,pan_zoom='minimap')
+                y= ( 'People in room'), height=400,pan_zoom='minimap')
         with data_col:
             st.subheader('Data Record')
             st.write(human_count)
@@ -328,7 +319,7 @@ with people_tab:
                 st.success("Data downloaded successfully!")
     else:
         plost.line_chart( human_count, x='TimeStamp',  # The name of the column to use for the x axis.
-                        y= ( 'People in room'), width=1000,pan_zoom='minimap')    
+                        y= ( 'People in room'),pan_zoom='minimap')    
 
 # https://plost.streamlitapp.com/
 # https://github.com/Socvest/streamlit-on-Hover-tabs
