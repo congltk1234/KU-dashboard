@@ -109,6 +109,10 @@ def load_data():
     human_count['TimeStamp'] = pd.to_datetime(human_count['TimeStamp'])
     return df, human_count
 
+@st.cache
+def convert_df(df):
+     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+     return df.to_csv().encode('utf-8')
 
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
@@ -133,8 +137,6 @@ try:
     os.mkdir('output')
 except:
     pass
-
-
 
 
 ##### SIDEBAR ####
@@ -168,13 +170,13 @@ with st.sidebar:
         st.success("Alrady export data to Output folder!")
         os.chdir(owd)
 
-    if st.button('Export all data to JSON'):
-        json_path = 'output/data.json'
-        json_data = get_json()
-        with open(json_path, "w") as outfile:
-            outfile.write(json_data)
-        st.success("Alrady export data to Output folder!")
 
+    json_data = get_json()
+    json_button = st.download_button(label="Download JSON",
+    file_name="data.json", mime="application/json",data=get_json())
+    if json_button:
+        st.success("Already export data to JSON!")
+    st.json(json_data, expanded=False)
     ### Message
     with st.spinner("Loading..."):
         time.sleep(1)
@@ -185,12 +187,15 @@ def sensor_button(show_data):
             query = ['TimeStamp']
             for i in options_sensors:
                 query.append(i)
-            ## Button Export CSV        
-            if st.button('Save data to CSV file'):
-                os.chdir('output')
-                df[query].to_csv('sensors.csv')
-                st.success("Your data save as 'sensors.csv'")
-                os.chdir(owd)
+            ## Button Export CSV 
+            csv = convert_df(df[query])
+            sensors = st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='sensors.csv',
+                    mime='text/csv')
+            if sensors:
+                st.success("Data downloaded successfully!")       
             st.table(df[query])
 
 color = {'Current(A)':'#ddf542', 'Volete(V)':'#ff1900', 'Watts(W)': '#ed6b00', 'Humidity(%)':'#10ed00', 'Temp(°C)':'#0043ed' }
@@ -313,11 +318,14 @@ with people_tab:
             st.subheader('Data Record')
             st.write(human_count)
         ## Button Export CSV
-            if st.button('Save to CSV file'):
-                os.chdir('output')
-                human_count.to_csv('people_count.csv')
-                os.chdir(owd)
-                st.success("Your data save as 'people_count.csv'")
+            csv = convert_df(human_count)
+            people = st.download_button(
+                    label="Download data as CSV",
+                    data=csv,
+                    file_name='human_count.csv',
+                    mime='text/csv')
+            if people:
+                st.success("Data downloaded successfully!")
     else:
         plost.line_chart( human_count, x='TimeStamp',  # The name of the column to use for the x axis.
                         y= ( 'People in room'), width=1000,pan_zoom='minimap')    
