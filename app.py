@@ -281,7 +281,7 @@ with sensor_tab:
             plost.line_chart(df, x='TimeStamp',  # The name of the column to use for the x axis.
             y= (i),  # The name of the column to use for the data itself.
             color = color[i],
-            width=1000, pan_zoom='minimap')
+            pan_zoom='minimap')
         sensor_button(show_data)
 
 
