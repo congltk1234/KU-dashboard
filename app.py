@@ -199,10 +199,13 @@ avg = {'Current(A)':df['Current(A)'].mean(),
           'Temp(°C)':df['Temp(°C)'].mean()}
 about_tab, sensor_tab, people_tab= st.tabs(["About the Project","📈Sensors", "👥People count"])
 with about_tab:
-    st.header("Describe about the Project")
-    st.subheader("Which Hardware used??")
-    image = Image.open('hardware.png')
-    st.image(image, caption='Sensors System', width=500)
+    st.header("OVERVIEW Project")
+    diagram = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/diagram.png', caption='Diagram')
+    st.subheader("Equipments used in this project:")
+    equip = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/equipments.png', caption='Equipments')
+    st.subheader("The Sensors system:")
+    hardware = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/hardware.png', caption='Hardware')
+
 with sensor_tab:
     if type_dashboard == 'RealTime':
         tit, cur_time =  st.columns(2)
