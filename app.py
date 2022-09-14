@@ -200,7 +200,7 @@ avg = {'Current(A)':df['Current(A)'].mean(),
 about_tab, sensor_tab, people_tab= st.tabs(["About the Project","📈Sensors", "👥People count"])
 with about_tab:
     st.header("OVERVIEW Project")
-#     diagram = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/diagram.png', caption='Diagram')
+    diagram = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/diagram.png', caption='Diagram')
     st.subheader("Equipments used in this project:")
     equip = st.image('https://raw.githubusercontent.com/congltk1234/KU-dashboard/main/figure/equipments.png', caption='Equipments')
     st.subheader("The Sensors system:")
