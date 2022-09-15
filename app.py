@@ -151,15 +151,6 @@ with st.sidebar:
 
     ## Checkbox show data
     show_data = st.checkbox('Show data')   
-    # show_human_data = st.checkbox('Show human counting')
-
-    # Save data
-    # if st.button('Export all data to CSV'):
-    #     os.chdir('output')
-    #     df.to_csv('sensors.csv')
-    #     human_count.to_csv('people_count.csv')
-    #     st.success("Alrady export data to Output folder!")
-    #     os.chdir(owd)
 
 
     json_data = get_json()
@@ -179,7 +170,7 @@ def sensor_button(show_data):
             for i in options_sensors:
                 query.append(i)
             ## Button Export CSV 
-            csv = convert_df(df[query])
+            csv = convert_df(df[query].sort_values(by=['TimeStamp']))
             sensors = st.download_button(
                     label="Download data as CSV",
                     data=csv,
@@ -187,7 +178,7 @@ def sensor_button(show_data):
                     mime='text/csv')
             if sensors:
                 st.success("Data downloaded successfully!")       
-            st.table(df[query])
+            st.table(df[query].sort_values(by=['TimeStamp']))
 
 color = {'Current(A)':'#ddf542', 'Volete(V)':'#ff1900', 'Watts(W)': '#ed6b00', 'Humidity(%)':'#10ed00', 'Temp(°C)':'#0043ed' }
 label = {'Current(A)':'Current', 'Volete(V)':'Volete', 'Watts(W)': 'Watts', 'Humidity(%)':'Humidity', 'Temp(°C)':'Temperature' }
@@ -236,6 +227,7 @@ with sensor_tab:
 
 
     #plots
+    df = df.sort_values(by=['TimeStamp'])
     if len(options_sensors) > 2:
         graph1, graph2 = st.columns(2)
         with graph1:
@@ -310,6 +302,7 @@ with people_tab:
                 y= ( 'People in room'), height=400,pan_zoom='minimap')
         with data_col:
             st.subheader('Data Record')
+            human_count = human_count.sort_values(by=['TimeStamp'])
             st.write(human_count)
         ## Button Export CSV
             csv = convert_df(human_count)
