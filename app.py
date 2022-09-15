@@ -211,15 +211,15 @@ with sensor_tab:
         metric1, metric2, metric3, metric4, metric5 = st.columns(5)
         try: 
             with metric1:
-                st.metric(label=label[options_sensors[0]], value=f"{avg[options_sensors[0]]:.2f} {unit[options_sensors[0]]}", delta=f"10 {unit[options_sensors[0]]}")
+                st.metric(label=label[options_sensors[0]], value=f"{avg[options_sensors[0]]:.2f} {unit[options_sensors[0]]}") #delta=f"10 {unit[options_sensors[1]]}")
             with metric2:
-                st.metric(label=label[options_sensors[1]], value=f"{avg[options_sensors[1]]:.2f} {unit[options_sensors[1]]}", delta=f"10 {unit[options_sensors[1]]}")
+                st.metric(label=label[options_sensors[1]], value=f"{avg[options_sensors[1]]:.2f} {unit[options_sensors[1]]}")
             with metric3:
-                st.metric(label=label[options_sensors[2]], value=f"{avg[options_sensors[2]]:.2f} {unit[options_sensors[2]]}", delta=f"10 {unit[options_sensors[2]]}")
+                st.metric(label=label[options_sensors[2]], value=f"{avg[options_sensors[2]]:.2f} {unit[options_sensors[2]]}")
             with metric4:
-                st.metric(label=label[options_sensors[3]], value=f"{avg[options_sensors[3]]:.2f} {unit[options_sensors[3]]}", delta=f"10 {unit[options_sensors[3]]}")
+                st.metric(label=label[options_sensors[3]], value=f"{avg[options_sensors[3]]:.2f} {unit[options_sensors[3]]}")
             with metric5:
-                st.metric(label=label[options_sensors[4]], value=f"{avg[options_sensors[4]]:.2f} {unit[options_sensors[4]]}", delta=f"10 {unit[options_sensors[4]]}")
+                st.metric(label=label[options_sensors[4]], value=f"{avg[options_sensors[4]]:.2f} {unit[options_sensors[4]]}")
         except:
             pass
     else:
