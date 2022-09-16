@@ -1,0 +1,21 @@
+# mac dinh
+python detect.py --source 0 --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device 0 --class 0 1 2 4
+
+# chạy dòng này để test web cam
+# webcam gpu device 0
+python detect_main.py --source 0 --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device 0 --class 0 1 2 4
+
+# webcam cpu device cpu
+python detect_main.py --source 0 --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device cpu --class 0 1 2 4
+
+# futsal.mp4
+& C:/Users/LENOVO/AppData/Local/Programs/Python/Python39/python.exe c:/Users/LENOVO/Desktop/yolor_ipcam_project/detect_main.py --source "futsal.mp4" --output "output/futsal.mp4"  --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device 0 --class 0
+
+
+#chạy dòng nảy để chạy Webcam
+& C:/Users/LENOVO/AppData/Local/Programs/Python/Python39/python.exe c:/Users/LENOVO/Desktop/yolor_ipcam_project/detect_main.py --source 0 --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.25 --img-size 1280 --device 0 --class 0
+
+# For run <People counter>
+& C:/Users/LENOVO/AppData/Local/Programs/Python/Python39/python.exe c:/Users/LENOVO/Desktop/yolor_ipcam_project/detect_main.py --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.3 --device 0 --class 0
+
+python detect_main.py --cfg cfg/yolor_p6.cfg --weights yolor_p6.pt --conf 0.3 --device 0 --class 0
