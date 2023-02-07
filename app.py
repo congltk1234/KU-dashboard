@@ -150,11 +150,12 @@ with st.sidebar:
         
 
     ## Checkbox show data
-    bulbControl = st.checkbox('TURN ON BULB')
-    if agree:
-        st.success("BULB is ON")
-    else:
-        st.warning("BULB is OFF")
+    bulbControl = st.select_slider(
+    'Select Bulb state', options=['ON', 'OFF'])
+    if db.get().val()['LED State'] != bulbControl:
+        st.success(f"BULB is {bulbControl}")
+        db.update({"LED State":bulbControl})
+
     show_data = st.checkbox('Show data')   
 
 
