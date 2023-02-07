@@ -150,6 +150,11 @@ with st.sidebar:
         
 
     ## Checkbox show data
+    bulbControl = st.checkbox('TURN ON BULB')
+    if agree:
+        st.success("BULB is ON")
+    else:
+        st.warning("BULB is OFF")
     show_data = st.checkbox('Show data')   
 
 
