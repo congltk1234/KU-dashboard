@@ -3,3 +3,4 @@ pandas
 pyrebase4
 streamlit
 plost
+requests
